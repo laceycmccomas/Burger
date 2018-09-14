@@ -15,13 +15,13 @@ router.get("/", function(req, res) {
     });
 });
 
-router.post("/models/burger.js", function(req,res) {
+router.post("/models/burger", function(req,res) {
     burger.create(["name", "devoured"], [req.body.name, req.body.devoured], function(result) {
         res.json({ id: result.insertId});
     });
 });
 
-router.put("/models/burger.js/:id", function(req, res) {
+router.put("/models/burger/:id", function(req, res) {
     var condition = "id = " + req.params.id;
     console.log("condition", condition);
 

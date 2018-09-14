@@ -1,0 +1,29 @@
+
+<h1>What Burger Would You Like to Eat?</h1>
+
+
+
+
+
+<h2>Burgers to Taste!</h2>
+<ul>
+  {{#each burgers}}
+    <li>
+      <p>{{burgersType}}</p>
+      <p>{{#unless devoured}}</p>
+    </li>
+  {{/each}}
+</ul>
+
+<h2>Burgers I've Tasted!</h2>
+<ul>
+  {{#each burgers}}
+    <li>
+      <p>{{burgersType}}</p>
+      <p>{{#if devoured}}</p>
+    </li>
+  {{/each}}
+</ul>
+
+
+<button type="button" class="btn btn-secondary btn-lg">ORDER!</button>
