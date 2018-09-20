@@ -2,7 +2,7 @@ var express = require ("express");
 
 var router = express.Router();
 
-var burger = require ("./models/burger.js");
+var burger = require ("../models/burger.js");
 
 
 router.get("/", function(req, res) {
@@ -16,7 +16,8 @@ router.get("/", function(req, res) {
 });
 
 router.post("/models/burger", function(req,res) {
-    burger.create(["name", "devoured"], [req.body.name, req.body.devoured], function(result) {
+    burger.create(["name", "devoured"],
+     [req.body.name, req.body.devoured], function(result) {
         res.json({ id: result.insertId});
     });
 });
@@ -33,12 +34,24 @@ router.put("/models/burger/:id", function(req, res) {
         function(result) {
             if(result.changedRows === 0) {
                 return res.status(404).end();
-            }
+            }else{
             res.status(200).end();
+            }
         }
     );
 });
 
+router.delete("/models/burger/id:", function(req,res) {
+    var condition = "id = " + req.params.id;
+
+    burger.delete(condition, function(result) {
+        if(result.affectedRows == 0) {
+            return res.status(404).end();
+        }else {
+            res.status(200).end();
+        }
+    });
+});
 
 
-module.exports = burgers_controller.js;
+module.exports = router;
