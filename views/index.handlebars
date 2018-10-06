@@ -16,20 +16,22 @@
 <h2>Burgers to Taste!</h2>
 <ul>
   {{#each burgers}}
+  {{#unless this.devoured}}
     <li>
       <p>{{burgersType}}</p>
-      <p>{{#unless devoured}}</p>
     </li>
+    {{/unless}}
   {{/each}}
 </ul>
 
 <h2>Burgers I've Tasted!</h2>
 <ul>
   {{#each burgers}}
+  {{#if this.devoured}}
     <li>
       <p>{{burgersType}}</p>
-      <p>{{#if devoured}}</p>
     </li>
+    {{/if}}
   {{/each}}
 </ul>
 

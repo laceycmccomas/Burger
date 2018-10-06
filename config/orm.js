@@ -2,11 +2,13 @@ var connection = require ("../config/connection.js");
 
 
 var orm = {
-  all: function(tableInput, colToSearch, valOfCol) {
-    var queryString = "SELECT * FROM ?? WHERE ?? = ?";
-    connection.query(queryString, [tableInput, colToSearch, valOfCol], function(err, result) {
+  all: function(tableInput, cb) {
+    console.log(tableInput);
+    var queryString = "SELECT * FROM ??";
+    connection.query(queryString, [tableInput], function(err, result) {
+
       if (err) throw err;
-      console.log(result);
+        cb(result);
     });
   },
   InsertOne: function(whatToSelect, table, orderCol) {
