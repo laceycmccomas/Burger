@@ -35,4 +35,4 @@ var orm = {
 
 
 
-module.exports = orm.js;
+module.exports = orm;
